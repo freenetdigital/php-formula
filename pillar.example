@@ -73,6 +73,10 @@ php:
 
         # options to manage the php.ini file used by php-fpm
         ini:
+          # When not set or True, the file is managed.
+          # Otherwise, the file is not managed (this option is useful
+          # when migrating a complex system ini file.)
+          managed: True
           # arguments passed through to file.managed
           opts:
             recurse: True
@@ -114,7 +118,7 @@ php:
 
           # Overwrite the filename for ext_pillar that doesn't allow
           # dots in fields names.
-          filname: my_other_name.conf
+          filename: my_other_name.conf
 
           # arguments passed forward to file.managed or file.absent
           opts:
