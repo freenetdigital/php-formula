@@ -10,7 +10,11 @@ extend:
   php_fpm_service:
     service:
       - watch:
+        {% set ini_file_managed = php.fpm.config.ini.get("managed", True) %}
+        {% if ini_file_managed == True %}
         - file: php_fpm_ini_config
+        {% endif %}
+
         - file: php_fpm_conf_config
       - require:
         - sls: php.ng.fpm.config
